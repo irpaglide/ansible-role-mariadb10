@@ -3,7 +3,7 @@
   register: slave
   tags: repl
 
-- debug: msg="{{slave}}"
+- debug: msg="{{slave.Slave_IO_Running}}"
 
 - mysql_replication:
     mode: getmaster
