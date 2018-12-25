@@ -14,18 +14,6 @@
       - MariaDB-client
       - MySQL-python
 
-  - name: Create a new database
-    mysql_db:
-      name: "{{db_name}}"
-      state: present
-
-  - name: Create database user
-    mysql_user:
-      name: "{{db_username}}"
-      password: "{{db_password}}"
-      priv: '*.*:ALL'
-      state: present
-
   - name: Create database replication user
     mysql_user:
       name: "repl"
