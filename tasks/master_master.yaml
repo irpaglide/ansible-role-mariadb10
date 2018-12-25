@@ -1,4 +1,11 @@
 - mysql_replication:
+    mode: getslave
+  register: slave
+  tags: repl
+
+- debug: msg="{{slave}}"
+
+- mysql_replication:
     mode: getmaster
   register: master
   tags: repl
