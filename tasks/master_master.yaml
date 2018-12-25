@@ -37,6 +37,7 @@
 - mysql_replication:
     mode: stopslave
   ignore_errors: true
+  when: slave.Slave_IO_Running != "Yes"
   tags: repl
 
 - mysql_replication:
@@ -44,8 +45,10 @@
     master_host: "{{master_host}}"
     master_log_file: "{{master_bin_file}}"
     master_log_pos: "{{master_bin_pos}}"
+  when: slave.Slave_IO_Running != "Yes"
   tags: repl
 
 - mysql_replication:
     mode: startslave
+  when: slave.Slave_IO_Running != "Yes"
   tags: repl
