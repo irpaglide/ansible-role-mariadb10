@@ -1,0 +1,44 @@
+- mysql_replication:
+    mode: getmaster
+  register: master
+  tags: repl
+
+- debug: msg="{{master}}"
+  tags: repl
+
+- set_fact:
+    master_bin_file: "{{hostvars[item].master.File}}"
+  with_items:  "{{groups['tag_role_db']}}"
+  when: ansible_ec2_local_ipv4 != item
+  tags: repl
+
+- set_fact:
+    master_bin_pos: "{{hostvars[item].master.Position}}"
+  with_items:  "{{groups['tag_role_db']}}"
+  when: ansible_ec2_local_ipv4 != item
+  tags: repl
+
+- set_fact:
+    master_host: "{{item}}"
+  with_items:  "{{groups['tag_role_db']}}"
+  when: ansible_ec2_local_ipv4 != item
+  tags: repl
+
+- debug: msg="{{master_host}} {{master_bin_file}} {{master_bin_pos}}"
+  tags: repl
+
+- mysql_replication:
+    mode: stopslave
+  ignore_errors: true
+  tags: repl
+
+- mysql_replication:
+    mode: changemaster
+    master_host: "{{master_host}}"
+    master_log_file: "{{master_bin_file}}"
+    master_log_pos: "{{master_bin_pos}}"
+  tags: repl
+
+- mysql_replication:
+    mode: startslave
+  tags: repl
