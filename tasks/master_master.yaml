@@ -1,7 +1,6 @@
 - mysql_replication:
     mode: getslave
   register: slave
-  tags:
 
 - debug: msg="{{slave}}"
 
