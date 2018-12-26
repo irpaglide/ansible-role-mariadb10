@@ -22,7 +22,7 @@
     mysql_user:
       name: "repl"
       password: "cwnyb3uy23grdsx"
-      priv: "*.*:REPLICATION CLIENT"
+      priv: "*.*:REPLICATION SLAVE,REPLICATION CLIENT"
       state: present
 
   - name: "Configure mariaDB Server"
