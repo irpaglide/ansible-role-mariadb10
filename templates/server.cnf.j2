@@ -43,9 +43,23 @@
 # If you use the same .cnf file for MariaDB of different versions,
 # use this group for options that older servers don't understand
 [mariadb-10.1]
-server-id = {{server_id|default('1')}}
-auto_increment_increment = {{auto_increment|default('1')}}
+server-id={{server_id|default('1')}}
+auto_increment_increment={{auto_increment|default('1')}}
 log-bin=mysql-bin
-query_cache_type = 1
-query_cache_size = 64M
+query_cache_type=1
+query_cache_size=64M
 query_cache_limit=4M
+innodb_buffer_pool_size=18G
+thread_cache_size=32
+thread_concurrency=105
+join_buffer_size=16M
+innodb_autoextend_increment=512
+max_allowed_packet=16M
+max_heap_table_size=256M
+read_buffer_size=8M
+read_rnd_buffer_size=32M
+bulk_insert_buffer_size=128M
+myisam_sort_buffer_size=128M
+myisam_max_sort_file_size=10G
+myisam_max_extra_sort_file_size=10G
+myisam_repair_threads=1
