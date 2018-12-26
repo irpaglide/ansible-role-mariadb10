@@ -14,6 +14,10 @@
       - MariaDB-client
       - MySQL-python
 
+  - systemd:
+      name: mariadb
+      state: started
+
   - name: Create database replication user
     mysql_user:
       name: "repl"
