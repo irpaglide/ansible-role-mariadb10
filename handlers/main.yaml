@@ -2,5 +2,5 @@
   - name: restart mariadb
     systemd:
       name: mariadb
-      state: reloaded
+      state: restarted
     become: yes
