@@ -23,6 +23,7 @@
       name: "repl"
       password: "cwnyb3uy23grdsx"
       priv: "*.*:REPLICATION SLAVE,REPLICATION CLIENT"
+      host: "10.%"
       state: present
 
   - name: "Configure mariaDB Server"
