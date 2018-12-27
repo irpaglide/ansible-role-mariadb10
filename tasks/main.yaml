@@ -32,3 +32,8 @@
       src: "server.cnf.j2"
     tags: config
     notify: restart mariadb
+
+  - name: Configure Logrotate
+    copy:
+      dest: /etc/logrotate.d/mysql-server
+      src: logrotate.conf
