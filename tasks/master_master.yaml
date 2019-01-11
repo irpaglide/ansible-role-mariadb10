@@ -17,7 +17,7 @@
   tags: repl
 
 - debug:
-    msg: "{{hostvars[item]}}"
+    msg: "{{hostvars[item]['master']}}"
   with_items:  "{{groups['tag_role_db']}}"
 
 - set_fact:
