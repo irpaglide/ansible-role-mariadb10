@@ -20,7 +20,8 @@
   debug:
     msg: "{{hostvars[item]['master']}}"
   with_items:  "{{groups['tag_role_db']}}"
-
+  when: hostvars.item.master is defined
+  
 - set_fact:
     master_bin_file: "{{hostvars[item].master.File}}"
   with_items:  "{{groups['tag_role_db']}}"
