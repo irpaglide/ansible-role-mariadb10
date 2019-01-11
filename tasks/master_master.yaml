@@ -16,7 +16,8 @@
 - debug: msg="{{master}}"
   tags: repl
 
-- debug:
+- name: "DEBUG MASTER"
+  debug:
     msg: "{{hostvars[item]['master']}}"
   with_items:  "{{groups['tag_role_db']}}"
 
