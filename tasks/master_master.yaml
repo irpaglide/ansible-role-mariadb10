@@ -16,7 +16,9 @@
 - debug: msg="{{master}}"
   tags: repl
 
-
+- debug:
+    msg: "{{hostvars[item]}}"
+  with_items:  "{{groups['tag_role_db']}}"
 
 - set_fact:
     master_bin_file: "{{hostvars[item].master.File}}"
