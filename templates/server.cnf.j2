@@ -67,5 +67,9 @@ slow_query_log = on
 slow_query_log_file = /var/log/mysql/mysql-slow.log
 long_query_time = 3
 binlog-format=ROW
-wait_timeout=3600
+wait_timeout=6000
+net_write_timeout=3600
+net_read_timeout=3600
+connect_timeout=6000
+
 innodb_log_file_size = 128M
