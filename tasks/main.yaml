@@ -2,7 +2,7 @@
   - name: "Configure MariaDB repo"
     yum_repository:
       name: "mariaDB"
-      baseurl: "http://yum.mariadb.org/10.3/rhel7-amd64"
+      baseurl: "http://yum.mariadb.org/10.1/rhel7-amd64"
       gpgkey:  "https://yum.mariadb.org/RPM-GPG-KEY-MariaDB"
       description: "MariaDB 10.x"
 
@@ -26,12 +26,12 @@
       host: "10.%"
       state: present
 
-  - name: "Configure mariaDB Server"
-    template:
-      dest: "/etc/my.cnf.d/server.cnf"
-      src: "server.cnf.j2"
-    tags: config
-    notify: restart mariadb
+  #- name: "Configure mariaDB Server"
+  #  template:
+  #    dest: "/etc/my.cnf.d/server.cnf"
+  #    src: "server.cnf.j2"
+  #  tags: config
+  #  notify: restart mariadb
 
   - name: Configure Logrotate
     copy:
